@@ -13,7 +13,7 @@ public class Voyage {
         car.currentFuel();
         car.distanceLeft();
         System.out.println();
-        car.drive(car.getFuel(), car.getFuelConsumption(), distance, distOdsKryveOzero, distKozJashkiv);
+        car.drive(car.getFuelConsumption(), distOdsKryveOzero, distKozJashkiv);
         System.out.println("\nVoyage price: " + fuelPrice * Car.spentFuel +
                 " UAN." + " Fuel price: " + fuelPrice + " UAN.");
     }

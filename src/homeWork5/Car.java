@@ -40,8 +40,9 @@ public class Car {
         System.out.printf("\nYou have fuel for: %.2f km", fuel / fuelConsumption * 100);
     }
 
-    public double drive(double fuel, double fuelConsumption,
-                        double distance, double distOdsKryveOzero, double distKozJashkiv) {
+    public double drive(double fuelConsumption,
+                        double distOdsKryveOzero, double distKozJashkiv) {
+
         double spentFuel1 = distOdsKryveOzero / fuelConsumption;
         setSpentFuel(spentFuel1);
         setFuel(getFuel() - spentFuel1);
@@ -51,7 +52,6 @@ public class Car {
         refuel();
         distanceLeft();
         System.out.println();
-
 
         double spentFuel2 = distKozJashkiv / fuelConsumption;
         setSpentFuel(spentFuel1 + spentFuel2);
