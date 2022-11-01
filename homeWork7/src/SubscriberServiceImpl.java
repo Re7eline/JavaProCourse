@@ -37,7 +37,7 @@ public class SubscriberServiceImpl implements SubscriberService {
     public void subscriberInfo() {
         System.out.println("Subscribers info with surname on 'M': ");
         for (Subscriber subscriber : SubscriberList.subscribers) {
-            if (subscriber.getSurname().toUpperCase(Locale.ROOT).startsWith("B")) {
+            if (subscriber.getSurname().toUpperCase(Locale.ROOT).startsWith("M")) {
                 System.out.println("Full name: " + subscriber.getSurname() + "." + subscriber.getName() +
                         "." + subscriber.getPatronymic() + ". Mobile: " + subscriber.getMobNum() +
                         " Balance: " + subscriber.getBalance());
