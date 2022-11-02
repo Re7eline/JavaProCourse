@@ -3,7 +3,7 @@ public class SubscriberList {
 
     public static Subscriber[] addSubscribers() {
         subscribers[0] = new Subscriber(1, "Berezovskiy", "Ivan", "Vitaliiiovych",
-                "Odessa", "0678945956", 1, 100,
+                "Odesa", "0678945956", 1, 100,
                 3, 0, 5000);
         subscribers[1] = new Subscriber(2, "Myrashko", "Oleg", "Olegovych",
                 "Odesa", "0986597321", 2, 200,
@@ -15,7 +15,7 @@ public class SubscriberList {
                 "Kyiv", "0958956321", 4, 50,
                 150, 19, 800);
         subscribers[4] = new Subscriber(5, "Prykhodko", "Volodymyr", "Olegovych",
-                "Odessa", "0962536514", 5, -30,
+                "Odesa", "0962536514", 5, -30,
                 60, 0, 16009);
         subscribers[5] = new Subscriber(6, "Bogyslavskiy", "Vitaliy", "Valeriiovych",
                 "Kherson", "0639874595", 6, 1200,
@@ -34,9 +34,6 @@ public class SubscriberList {
                 205, 0, 60986);
         subscribers[10] = new Subscriber(11, "Prykhodko", "Volodymyr", "Vitaliiovych",
                 "Kherson", "0993669879", 11, 500, 150, 90, 16985);
-
-
-//        System.out.println(Arrays.toString(subscribers));
         return subscribers;
     }
 
