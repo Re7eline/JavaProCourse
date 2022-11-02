@@ -12,19 +12,21 @@ public class SubscriberMain {
             int check = sc.nextInt();
             switch (check) {
                 case 1:
-                    service.checkCityCalls();
+                    service.exceedingLimitLocalCalls(SubscriberList.subscribers);
                     break;
                 case 2:
-                    service.checkIntercityCalls();
+                    service.intercityCallsUsers(SubscriberList.subscribers);
                     break;
                 case 3:
-                    service.subscriberInfo();
+                    System.out.println("Enter the 1st letter of surname to search...");
+                    service.findSbscrByFirstLetterSurname(SubscriberList.subscribers, sc.next().toUpperCase());
                     break;
                 case 4:
-                    service.checkTrafficInCity();
+                    System.out.println("Enter the city(Kyiv, Odesa, Sumy, Kherson) for check traffic: ");
+                    service.calcTotalTrafficConsumption(SubscriberList.subscribers, sc.next());
                     break;
                 case 5:
-                    service.checkNegativeBalance();
+                    service.findNegativeBalanceSubscribers(SubscriberList.subscribers);
                     break;
                 case 6:
                     System.out.println("Exiting...");

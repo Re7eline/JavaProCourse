@@ -1,8 +1,12 @@
 public interface SubscriberService {
-    void checkCityCalls();
-    void checkIntercityCalls();
-    void subscriberInfo();
-    void checkTrafficInCity();
-    void checkNegativeBalance();
+    void exceedingLimitLocalCalls(Subscriber[] subscribers);
+
+    void intercityCallsUsers(Subscriber[] subscriber);
+
+    void findSbscrByFirstLetterSurname(Subscriber[] subscriber, String firstLetter);
+
+    void calcTotalTrafficConsumption(Subscriber[] subscriber, String inputCity);
+
+    void findNegativeBalanceSubscribers(Subscriber[] subscriber);
 
 }
