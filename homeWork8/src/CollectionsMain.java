@@ -1,6 +1,6 @@
 public class CollectionsMain {
     public static void main(String[] args) {
-        OperationsWithList actions = new OperationsWithList();
+        OperationsWithListImpl actions = new OperationsWithListImpl();
         actions.addToCollection("1");
         actions.addToCollection("2");
         actions.addToCollection("3");
