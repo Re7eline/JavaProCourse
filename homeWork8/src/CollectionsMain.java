@@ -13,8 +13,8 @@ public class CollectionsMain {
         actions.addToCollection("10");
         actions.addToCollection("11");
         actions.getIndex(6);
-        actions.addToCollectionByIndex(11, "12");
-        actions.deleteByIndex(11);
+        actions.addToCollectionByIndex(15, "12");
+        actions.deleteByIndex(10);
         actions.deleteByValue("2");
     }
 }
