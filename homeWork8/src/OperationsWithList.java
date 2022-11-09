@@ -1,3 +1,4 @@
+
 public interface OperationsWithList {
     boolean addToCollection(String parameter);
 
@@ -8,4 +9,12 @@ public interface OperationsWithList {
     public boolean deleteByValue(String parameter);
 
     String getIndex(int index);
+
+    boolean contain(String parameter);
+
+    boolean equals (String[] stringArray);
+
+    boolean clear();
+
+    int size();
 }

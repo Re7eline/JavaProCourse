@@ -1,12 +1,12 @@
 import java.util.Arrays;
 
 public class OperationsWithListImpl implements OperationsWithList {
-    private static String[] stringCollection = new String[10];
+    private static String[] stringCollection = new String[5];
     private int indexOfCellInArray = 0;
 
     private static String[] extendArraySize(String[] stringArray, int index) {
         String[] temp = stringCollection.clone();
-        stringCollection = new String[index + 1];
+        stringCollection = new String[index + 5];
         System.arraycopy(temp, 0, stringCollection, 0, temp.length);
         return stringCollection;
     }
@@ -39,20 +39,17 @@ public class OperationsWithListImpl implements OperationsWithList {
             stringCollection[index] = null;
             System.out.println(Arrays.toString(stringCollection));
         } else {
-            System.err.println("Here is nothing to delete");
+            System.out.println("Here is nothing to delete");
         }
         return true;
     }
 
     @Override
     public boolean deleteByValue(String parameter) {
-        for (indexOfCellInArray = 0; indexOfCellInArray < stringCollection.length; indexOfCellInArray++) {
-            if (stringCollection[indexOfCellInArray].equals(parameter)) {
-                deleteByIndex(indexOfCellInArray);
-                break;
-            }
-        }
-        return true;
+        if (contain(parameter)) {
+            return deleteByIndex(indexOfCellInArray);
+        }else System.out.println("Here is nothing to delete");
+        return false;
     }
 
     @Override
@@ -63,8 +60,34 @@ public class OperationsWithListImpl implements OperationsWithList {
             chosenIndex = stringCollection[index];
             System.out.println(chosenIndex);
         } else {
-            System.err.println("Here is nothing");
+            System.out.println("Here is nothing");
         }
         return chosenIndex;
+    }
+
+    @Override
+    public boolean contain(String parameter) {
+        return Arrays.asList(stringCollection).contains(parameter);
+    }
+
+    @Override
+    public boolean equals(String[] stringArray) {
+        return Arrays.equals(stringArray, stringCollection);
+    }
+
+    @Override
+    public boolean clear() {
+        for (int i = 0; i < stringCollection.length; i++) {
+            stringCollection[i] = null;
+        }
+        System.out.println(Arrays.toString(stringCollection));
+        return true;
+    }
+
+    @Override
+    public int size() {
+        int size = Arrays.stream(stringCollection).toList().size();
+        System.out.println("Size of array: " + size);
+        return size;
     }
 }
