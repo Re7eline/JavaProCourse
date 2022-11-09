@@ -1,18 +1,15 @@
-
 public interface OperationsWithList {
-    boolean addToCollection(String parameter);
+    boolean add(String parameter);
 
-    boolean addToCollectionByIndex(int index, String parameter);
+    boolean add(int index, String o);
 
-    public boolean deleteByIndex(int index);
+    boolean delete(String o);
 
-    public boolean deleteByValue(String parameter);
+    String get(int index);
 
-    String getIndex(int index);
+    boolean contain(String o);
 
-    boolean contain(String parameter);
-
-    boolean equals (String[] stringArray);
+    boolean equals(String[] stringArray);
 
     boolean clear();
 
