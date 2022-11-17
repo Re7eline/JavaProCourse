@@ -5,12 +5,10 @@ public class CollectionsMain {
         actions.add("4");
         actions.add("7");
         actions.add("9");
-        actions.get(6);
-        actions.add(4, "3");
-        actions.delete("2");
-        System.out.println(actions.equals(new String[]{"1", "4", "7", "9", "3"}));
-        actions.size();
-        System.out.println(actions.contain("6"));
-        System.out.println(actions.clear());
+        actions.add("13");
+        System.out.println("This cell have next: "+actions.hasNext(2));
+        System.out.println(actions.next(3));
+        System.out.println(actions.remove("1"));
+
     }
 }

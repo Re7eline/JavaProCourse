@@ -1,6 +1,7 @@
 import java.util.Arrays;
+import java.util.Objects;
 
-public class OperationsWithListImpl implements OperationsWithList {
+public class OperationsWithListImpl implements OperationsWithList, Iterator {
     private static String[] stringCollection = new String[6];
     private int indexOfCellInArray = 0;
 
@@ -10,7 +11,7 @@ public class OperationsWithListImpl implements OperationsWithList {
             extendArraySize(stringCollection, indexOfCellInArray);
         }
         add(indexOfCellInArray++, parameter);
-//        stringCollection[indexOfCellInArray++] = parameter;
+//        stringNode[indexOfCellInArray++] = parameter;
         return true;
     }
 
@@ -27,9 +28,11 @@ public class OperationsWithListImpl implements OperationsWithList {
 
     @Override
     public boolean delete(String o) {
-        if (stringCollection[indexOfCellInArray].equals(o)) {
-            return delete(indexOfCellInArray);
-        } else System.out.println("Here is nothing to delete");
+        for (int i = 0; i < stringCollection.length; i++)
+            if (Objects.equals(stringCollection[i], o)) {
+                delete(i);
+                return true;
+            }
         return false;
     }
 
@@ -53,7 +56,7 @@ public class OperationsWithListImpl implements OperationsWithList {
                 return true;
             }
         }
-//        return Arrays.asList(stringCollection).contains(o);
+//        return Arrays.asList(stringNode).contains(o);
         return false;
     }
 
@@ -68,7 +71,7 @@ public class OperationsWithListImpl implements OperationsWithList {
                 }
             }
         }
-//        return Arrays.equals(stringArray, stringCollection);
+//        return Arrays.equals(stringArray, stringNode);
         return false;
     }
 
@@ -92,11 +95,9 @@ public class OperationsWithListImpl implements OperationsWithList {
 
     private boolean delete(int index) {
         index = Math.abs(index);
-        if (index < stringCollection.length && stringCollection[index] != null) {
+        if (index < stringCollection.length) {
             stringCollection[index] = null;
             System.out.println(Arrays.toString(stringCollection));
-        } else {
-            System.out.println("Here is nothing to delete");
         }
         return true;
     }
@@ -106,5 +107,34 @@ public class OperationsWithListImpl implements OperationsWithList {
         stringCollection = new String[index + 5];
         System.arraycopy(temp, 0, stringCollection, 0, temp.length);
         return stringCollection;
+    }
+
+    @Override
+    public String next(int index) {
+        index = Math.abs(index);
+        String current = null;
+        String next = null;
+        if (hasNext(index)) {
+            current = stringCollection[index];
+            next = stringCollection[++index];
+        }
+        return "current: " + current + " next: " + next;
+    }
+
+    @Override
+    public boolean hasNext(int index) {
+        index = Math.abs(index);
+        return index < stringCollection.length;
+    }
+
+    @Override
+    public boolean remove(String o) {
+        for (int i = 0; i < stringCollection.length; i++) {
+            if (hasNext(i) == contain(o)) {
+                delete(o);
+                return true;
+            }
+        }
+        return false;
     }
 }
