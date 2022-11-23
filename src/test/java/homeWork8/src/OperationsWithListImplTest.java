@@ -86,6 +86,5 @@ public class OperationsWithListImplTest {
         assertTrue("23", index < stringCollection.length);
         assertEquals("24", o, stringCollection[index] = o);
         assertNotNull("25", stringCollection[++index] = str);
-
     }
 }
