@@ -14,19 +14,23 @@ public class GameMain {
     public static void main(String[] args) {
         String continueGame = "Y";
         int gamesQuantity;
+
         Scanner sc = new Scanner(System.in);
         PlayerService ps = new PlayerService();
         Game game = new GameImpl();
+
         System.out.println(ANSI_BLUE + "Enter the quantity of games" + ANSI_RESET);
         gamesQuantity = sc.nextInt();
+        ps.addPlayer();
 
-        game.startGame(ps.addPlayer(), ps.addComputer());
-        gamesQuantity--;
 
         while (!continueGame.equalsIgnoreCase("N")) {
             if (gamesQuantity > 0) {
+                game.playerTurn(player);
+                game.computerTurn(computer);
                 game.startGame(player, computer);
                 System.out.println("Attempts left: " + --gamesQuantity);
+                System.out.println();
             } else {
                 System.out.println(player.getName() + " played " + player.getNumberOfGames() + " games." +
                         "\nYou lose: " + player.getNumberOfLoseGames() + " games" +

@@ -5,8 +5,10 @@ import players.Computer;
 import players.Player;
 
 public interface Game {
-  void  startGame(Player player, Computer computer);
-    String playerTurn(Player player);
-    String computerTurn(Computer computer);
+    GameResult startGame(Player player, Computer computer);
+
+    Player playerTurn(Player player);
+
+    Computer computerTurn(Computer computer);
 
 }

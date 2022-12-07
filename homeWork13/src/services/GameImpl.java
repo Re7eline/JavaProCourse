@@ -1,5 +1,6 @@
 package services;
 
+import enums.GameResult;
 import players.Computer;
 import players.Player;
 
@@ -11,10 +12,14 @@ import static enums.GameResult.*;
 import static enums.RSP.*;
 
 public class GameImpl implements Game {
+
+    public static GameResult gameResult;
+
     @Override
-    public void startGame(Player player, Computer computer) {
-        String computerHand = computerTurn(computer);
-        String playerHand = playerTurn(player);
+    public GameResult startGame(Player player, Computer computer) {
+        String computerHand = computer.getHand();
+        String playerHand = player.getHand();
+
         System.out.println(ANSI_CYAN + player.getName() + " choose: " + playerHand);
         System.out.println(ANSI_CYAN + "Computer choose: " + computerHand + ANSI_RESET);
         System.out.println();
@@ -23,20 +28,20 @@ public class GameImpl implements Game {
                 || (playerHand.equals("PAPER") && computerHand.equals("SCISSORS"))
                 || (playerHand.equals("SCISSORS") && computerHand.equals("ROCK"))) {
             player.setNumberOfLoseGames(player.getNumberOfLoseGames() + 1);
-            System.out.println(LOSE);
+            System.out.println(gameResult = LOSE);
         } else if ((playerHand.equals("PAPER") && computerHand.equals("ROCK"))
                 || (playerHand.equals("SCISSORS") && computerHand.equals("PAPER"))
                 || (playerHand.equals("ROCK") && computerHand.equals("SCISSORS"))) {
             player.setNumberOfWinGames(player.getNumberOfWinGames() + 1);
-            System.out.println(WIN);
-        } else System.out.println(DRAW);
+            System.out.println(gameResult = WIN);
+        } else System.out.println(gameResult = DRAW);
         player.setNumberOfGames(player.getNumberOfGames() + 1);
         System.out.println();
-
+        return gameResult;
     }
 
     @Override
-    public String playerTurn(Player player) {
+    public Player playerTurn(Player player) {
         Scanner sc = new Scanner(System.in);
         System.out.print(ANSI_BLUE + "Enter: \n'1' Rock, \n'2' Scissors \n'3' Paper, \n'e' to Exit\n" + ANSI_RESET);
         String userChoose = sc.nextLine();
@@ -51,13 +56,13 @@ public class GameImpl implements Game {
                     System.exit(0);
                 }
             }
-            return player.getHand();
+            return player;
         }
         return playerTurn(player);
     }
 
     @Override
-    public String computerTurn(Computer computer) {
+    public Computer computerTurn(Computer computer) {
         Random random = new Random();
         int computerChoose = random.nextInt(3);
         switch (computerChoose) {
@@ -65,6 +70,6 @@ public class GameImpl implements Game {
             case 1 -> computer.setHand(String.valueOf(SCISSORS));
             case 2 -> computer.setHand(String.valueOf(PAPER));
         }
-        return computer.getHand();
+        return computer;
     }
 }
