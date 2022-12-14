@@ -1,3 +1,4 @@
+import logger.FileStream;
 import services.Game;
 import services.GameImpl;
 import services.PlayerService;
@@ -30,6 +31,7 @@ public class GameMain {
                 game.startGame(player, computer);
                 System.out.println("Attempts left: " + --gamesQuantity);
                 System.out.println();
+                FileStream.arrayFilling();
             } else {
                 System.out.println(player.getName() + " played " + player.getNumberOfGames() + " games." +
                         "\nYou lose: " + player.getNumberOfLoseGames() + " games" +
@@ -37,12 +39,15 @@ public class GameMain {
                 System.out.println("Win rate: " +
                         (double) player.getNumberOfWinGames() / player.getNumberOfGames() * 100 + "%");
                 System.out.println();
-                System.err.println(ANSI_RED+"No more attempts. Do you want to continue?[Y/N]"+ANSI_RESET);
+
+                System.err.println(ANSI_RED + "No more attempts. Do you want to continue?[Y/N]" + ANSI_RESET);
                 continueGame = sc.next();
 
                 if (continueGame.equalsIgnoreCase("y")) {
                     System.out.println(ANSI_BLUE + "Enter the quantity of games" + ANSI_RESET);
                     gamesQuantity = sc.nextInt();
+                } else {
+                    FileStream.logWriteAccept();
                 }
             }
         }

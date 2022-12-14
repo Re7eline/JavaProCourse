@@ -13,4 +13,11 @@ public class Computer {
     public void setHand(String hand) {
         this.hand = hand;
     }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "hand='" + hand + '\'' +
+                '}';
+    }
 }
