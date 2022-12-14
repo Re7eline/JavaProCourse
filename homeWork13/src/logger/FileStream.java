@@ -16,20 +16,10 @@ import static services.PlayerService.computer;
 import static services.PlayerService.player;
 
 public class FileStream {
-    static List<GameResult> listOfGameResults = new ArrayList<GameResult>();
+    public static List<GameResult> listOfGameResults = new ArrayList<GameResult>();
     static Date date = new Date();
 
-    public static void logWrite() {
-        FileStream.logger();
-    }
-
-
-    public static void arrayFilling() {
-        listOfGameResults.add(gameResult);
-    }
-
-
-    private static void logger() {
+    public static void logger() {
 
         FileWriter fileWriter = null;
         File file = new File("log.txt");
@@ -43,16 +33,12 @@ public class FileStream {
         {
             try {
                 fileWriter = new FileWriter(file, true);
-
-                for (GameResult line : listOfGameResults) {
-                    fileWriter.write("\n" + date + "\n" + gameResult
-                            + "\nPlayer|Computer " + player.getHand() + "|" + computer.getHand()
-                            + "\nTotal Games|Win games|Lose games" + "\t"
-                            + player.getNumberOfGames() + "|" + player.getNumberOfWinGames()
-                            + "|" + player.getNumberOfLoseGames());
-                    fileWriter.write(System.getProperty("line.separator"));
-                }
-                fileWriter.flush();
+                fileWriter.write("\n" + date + "\n" + gameResult
+                        + "\nPlayer|Computer " + player.getHand() + "|" + computer.getHand()
+                        + "\nTotal Games|Win games|Lose games" + "\t"
+                        + player.getNumberOfGames() + "|" + player.getNumberOfWinGames()
+                        + "|" + player.getNumberOfLoseGames());
+                fileWriter.write(System.getProperty("line.separator"));
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

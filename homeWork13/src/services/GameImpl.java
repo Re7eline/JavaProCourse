@@ -1,6 +1,7 @@
 package services;
 
 import enums.GameResult;
+import logger.FileStream;
 import players.Computer;
 import players.Player;
 
@@ -10,6 +11,7 @@ import java.util.Scanner;
 import static colours.MessageColours.*;
 import static enums.GameResult.*;
 import static enums.RSP.*;
+import static logger.FileStream.listOfGameResults;
 
 public class GameImpl implements Game {
 
@@ -35,8 +37,11 @@ public class GameImpl implements Game {
             player.setNumberOfWinGames(player.getNumberOfWinGames() + 1);
             System.out.println(gameResult = WIN);
         } else System.out.println(gameResult = DRAW);
+
         player.setNumberOfGames(player.getNumberOfGames() + 1);
         System.out.println();
+        listOfGameResults.add(gameResult);
+        FileStream.logger();
         return gameResult;
     }
 
