@@ -51,7 +51,8 @@ public class FileStream {
                 fileWriter = new FileWriter(file, true);
 
                 for (GameResult line : listOfGameResults) {
-                    fileWriter.write(date + "\t|| " + line + "\t|| Player choose: " + player.getHand()
+                    fileWriter.write(date + "\t|| " + line
+                            + "\t|| " + player.getName() + " choose: " + player.getHand()
                             + "\t|| Computer choose: " + computer.getHand());
                     fileWriter.write(System.getProperty("line.separator"));
                 }
