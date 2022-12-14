@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 import static colours.MessageColours.ANSI_GREEN;
 import static colours.MessageColours.ANSI_RESET;
@@ -20,13 +19,8 @@ public class FileStream {
     static List<GameResult> listOfGameResults = new ArrayList<GameResult>();
     static Date date = new Date();
 
-    public static void logWriteAccept() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(ANSI_GREEN + "Do you want to write results in file?[Y/N]" + ANSI_RESET);
-        String choose = sc.next();
-        if (choose.equalsIgnoreCase("y")) {
-            FileStream.logger();
-        }
+    public static void logWrite() {
+        FileStream.logger();
     }
 
 
@@ -38,10 +32,10 @@ public class FileStream {
     private static void logger() {
 
         FileWriter fileWriter = null;
-        File file = new File("homeWork13/src/logger/log.txt");
+        File file = new File("log.txt");
 
         try {
-            System.out.println(file.getCanonicalPath() + " file exists? " + file.exists());
+            System.out.println(ANSI_GREEN + "Results of the game saved: " + ANSI_RESET + file.getCanonicalPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,9 +45,11 @@ public class FileStream {
                 fileWriter = new FileWriter(file, true);
 
                 for (GameResult line : listOfGameResults) {
-                    fileWriter.write(date + "\t|| " + line
-                            + "\t|| " + player.getName() + " choose: " + player.getHand()
-                            + "\t|| Computer choose: " + computer.getHand());
+                    fileWriter.write("\n" + date + "\n" + gameResult
+                            + "\nPlayer|Computer " + player.getHand() + "|" + computer.getHand()
+                            + "\nTotal Games|Win games|Lose games" + "\t"
+                            + player.getNumberOfGames() + "|" + player.getNumberOfWinGames()
+                            + "|" + player.getNumberOfLoseGames());
                     fileWriter.write(System.getProperty("line.separator"));
                 }
                 fileWriter.flush();

@@ -20,12 +20,11 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", hand='" + hand + '\'' +
-                ", numberOfGames=" + numberOfGames +
-                ", numberOfWinGames=" + numberOfWinGames +
-                ", numberOfLoseGames=" + numberOfLoseGames +
+        return name+"{" +
+                "hand='" + hand + '\'' +
+                ", Number Of Games=" + numberOfGames +
+                ", Number Of WinGames=" + numberOfWinGames +
+                ", Number Of LoseGames=" + numberOfLoseGames +
                 '}';
     }
 

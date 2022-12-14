@@ -47,7 +47,7 @@ public class GameMain {
                     System.out.println(ANSI_BLUE + "Enter the quantity of games" + ANSI_RESET);
                     gamesQuantity = sc.nextInt();
                 } else {
-                    FileStream.logWriteAccept();
+                    FileStream.logWrite();
                 }
             }
         }
