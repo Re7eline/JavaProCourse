@@ -28,8 +28,8 @@ public class ApplicationMain {
             path = Path.of(fileLink);
         }
 
-        if (Files.isDirectory(path)) {
-            System.out.println("Supported files in a directory: " + fs.supportedFiles(path));
+        if (Files.isDirectory(path)||(Files.isRegularFile(path))) {
+            System.out.println("Supported files: " + fs.supportedFiles(path));
 
             for (Path p : supportedFilesList) {
                 if (p.getFileName().toString().endsWith(YAML)) {
