@@ -1,0 +1,6 @@
+FROM openjdk:latest
+MAINTAINER NickTryhub
+EXPOSE 8080
+COPY SSP/target/SSP.jar SSP.jar
+WORKDIR /app
+CMD ["java","-jar","/SSP.jar"]
