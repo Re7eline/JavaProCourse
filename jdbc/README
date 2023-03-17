@@ -15,19 +15,12 @@
 
 
 + написать Юнит Тесты для этих методов (кто хочет)
-
-
-
 StudentService {} - interface
-
-|
-
 StudentServiceImpl {} - class - Unit Test
-
-|
-
 DBServise{} (3 или 5) - integration test - mock(getAll())
-
-|
-
 DB
+
+UPD:
+переписать реализацию JDBC -> hibernate
+написать метод которые будут добавлять Student
+получать всех студентов, по имени, по айди

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.yaml.snakeyaml.Yaml;
 import service.interfaces.Converter;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class JsonConverterImpl implements Converter {
@@ -14,6 +15,8 @@ public class JsonConverterImpl implements Converter {
             return new Yaml().dump(new ObjectMapper().readValue(data, Map[].class));
         } catch (JsonProcessingException e) {
             System.err.println("Json convertation fault!");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

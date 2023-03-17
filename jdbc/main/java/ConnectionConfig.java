@@ -15,7 +15,7 @@ public class ConnectionConfig {
 
         MysqlDataSource dataSource = new MysqlDataSource();
 
-        dataSource.setUseSSL(false);
+        dataSource.setUseSSL(true);
 
         dataSource.setServerTimezone(serverTimeZone);
 

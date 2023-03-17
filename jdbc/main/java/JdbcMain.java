@@ -1,9 +1,16 @@
+import org.hibernate.Session;
+
 import java.sql.SQLException;
 import java.util.Arrays;
 
 public class JdbcMain {
 
     public static void main(String[] args) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.close();
+        HibernateUtil.shutdown();
+
 
         ConnectionConfig connection = new ConnectionConfig();
         DataBaseController dbc = new DataBaseControllerImpl();
