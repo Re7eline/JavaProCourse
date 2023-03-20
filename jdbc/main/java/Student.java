@@ -1,5 +1,14 @@
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name = "Student")
 public class Student {
+    @Id
+    @Column(name = "Id", unique = true)
     private int id;
+    @Basic
+    @Column(name = "FullName")
     private String fullName;
 
     public Student() {}
@@ -15,7 +24,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "id=" + id + ", fullName='" + fullName + '\'' + '}';
+        return "Student{" + "id=" + id + ", FullName='" + fullName + '\'' + '}';
     }
 
     public int getId() {
@@ -32,5 +41,18 @@ public class Student {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && fullName.equals(student.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fullName);
     }
 }
